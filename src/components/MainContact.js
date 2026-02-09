@@ -15,13 +15,21 @@ export default function MainContact() {
     const form = e.currentTarget;
     const formData = new FormData(form);
 
-    const data = { "form-name": formName };
-    for (const [key, value] of formData.entries()) {
-      data[String(key)] = String(value);
+    const data = {
+        "form-name": formName,
+        name: formData.get("name") || "",
+        email: formData.get("email") || "",
+        company: formData.get("company") || "",
+        engagement_size: formData.get("engagement_size") || "",
+        decision: formData.get("decision") || "",
+        symptoms: formData.get("symptoms") || "",
+        links: formData.get("links") || "",
+        // include bot-field if you want, but it should always be empty
+        "bot-field": formData.get("bot-field") || "",
     }
 
     try {
-      const res = await fetch("/", {
+      const res = await fetch(window.location.pathname, {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body: encode(data),
