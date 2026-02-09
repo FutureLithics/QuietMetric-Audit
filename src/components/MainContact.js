@@ -7,7 +7,7 @@ export default function MainContact() {
             <form
             name="quietmetric-diagnostic"
             method="POST"
-            netlify
+            data-netlify="true"
             data-netlify-honeypot="bot-field"
             action="/thanks"
             style={{ display: "grid", gap: "0.75rem", maxWidth: 720 }}
